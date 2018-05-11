@@ -30,6 +30,7 @@ public class person {
 
     /**
      * Констроктор создания объекта с параметрами
+     *
      * @param firstName - Имя
      * @param lastName  - Фамилия
      * @param gender    -  Пол
@@ -43,6 +44,7 @@ public class person {
 
     /**
      * Метод получения значения поля {@link person#firstName}
+     *
      * @return Возврашает значение имени
      */
     public String getFirstName() {
@@ -51,6 +53,7 @@ public class person {
 
     /**
      * Метод получения значения поля {@link person#lastName}
+     *
      * @return Возврашает значение фамилии
      */
     public String getLastName() {
@@ -59,6 +62,7 @@ public class person {
 
     /**
      * Метод получения значения поля {@link person#spouse}
+     *
      * @return Возвращает значение семейного положения человека
      */
     public person getSpouse() {
@@ -67,6 +71,7 @@ public class person {
 
     /**
      * Метод устаноки Супруга/Супруги {@link person#spouse}
+     *
      * @param spouse - Супруг/Супруга
      */
     public void setSpouse(person spouse) {
@@ -74,17 +79,34 @@ public class person {
     }
 
     public persongender getGender() {
+
         return gender;
     }
 
     /**
      * Метод проверяюший равенство полов, если пол отличается, то пытаемся поженить их
-     * Если у человека более одного брака, то выполним развод
-     * @param P Новый супруг/супруга для текушего человека
-     * @return возвращает true, если у этого человека другой пол
-     * и они не не являются мужем и женой, false в противном случае
+     * Если у одного из имеется брак, то выполним развод, а затем поженим их вывзвав marry()
+     *
+     * @param p Новый супруг/супруга для текушего человека
+     * @return возвращает true, если у этого человека другой пол и
+     * человек не находится в состоянии брака c другим человеком, в противном случае false
      */
-    public boolean marry(person P){
+    public boolean marry(person p) {
+
+        if (this.getGender() != p.getGender() && p.getSpouse() != this.getSpouse()
+                || (p.getSpouse() == null && this.getSpouse() == null)) {
+            this.setSpouse(p);
+            p.setSpouse(this);
+            return true;
+        }
+
+        if (this.getSpouse() != null || p.getSpouse() != null) {
+            this.divorce();
+            p.divorce();
+            this.setSpouse(p);
+            p.setSpouse(this);
+            return  false;
+        }
         return false;
     }
 
@@ -92,7 +114,11 @@ public class person {
      * Устанавливает spouse в значение null при условии что spouse is not null
      * @return true - если статус барка изменен
      */
-    public  boolean divorce(){
-        return  true;
+    public boolean divorce() {
+        if (this.getSpouse() != null) {
+            this.spouse = null;
+            return true;
+        }
+        return false;
     }
 }
