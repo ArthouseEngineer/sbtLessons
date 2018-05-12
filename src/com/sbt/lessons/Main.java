@@ -2,8 +2,7 @@ package com.sbt.lessons;
 
 import com.sbt.lessons.lessonTwo.*;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Main {
 
