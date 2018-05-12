@@ -89,11 +89,11 @@ public class person {
      *
      * @param p Новый супруг/супруга для текушего человека
      * @return возвращает true, если у этого человека другой пол и
-     * человек не находится в состоянии брака c другим человеком, в противном случае false
+     * человек не находится в состоянии брака, в противном случае false
      */
     public boolean marry(person p) {
 
-        if (this.getGender() != p.getGender() && p.getSpouse() != this.getSpouse()
+        if (this.getGender() != p.getGender() //&& p.getSpouse() != this.getSpouse()
                 || (p.getSpouse() == null && this.getSpouse() == null)) {
             this.setSpouse(p);
             p.setSpouse(this);
@@ -105,13 +105,15 @@ public class person {
             p.divorce();
             this.setSpouse(p);
             p.setSpouse(this);
-            return  false;
+            return false;
         }
         return false;
     }
 
+
     /**
      * Устанавливает spouse в значение null при условии что spouse is not null
+     *
      * @return true - если статус барка изменен
      */
     public boolean divorce() {
@@ -120,5 +122,12 @@ public class person {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return ("First name is : " + this.getFirstName() + " \nLast name is : " + this.getLastName() +
+                "\nGender of person is : " + this.getGender() + "\nSupose is : " + this.getSpouse().getFirstName()
+                + " " + this.getSpouse().getLastName());
     }
 }

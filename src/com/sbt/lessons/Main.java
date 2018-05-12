@@ -16,20 +16,10 @@ public class Main {
         person Victoria = new person("Viktoria", "Erina", persongender.female);
 
         Joann.marry(Alla);
-        Jack.marry(Alina);
+        Victoria.marry(Jack);
+        Alina.marry(Joann);
 
-        boolean b = Victoria.marry(Joann);
+        System.out.println(Joann.toString());
 
-        System.out.println("First name is : " + Joann.getFirstName() + " \nLast name is : " + Joann.getLastName() +
-                "\nGender of person is : " + Joann.getGender() + "\nSupose is : " + Joann.getSpouse().getFirstName()
-                + " " + Joann.getSpouse().getLastName());
-
-        System.out.println();
-        System.out.println(b);
-        System.out.println();
-
-        System.out.println("First name is : " + Jack.getFirstName() + " \nLast name is : " + Jack.getLastName() +
-                "\nGender of person is : " + Joann.getGender() + "\nSupose is : " + Jack.getSpouse().getFirstName() +
-                " " + Jack.getSpouse().getLastName());
     }
 }
