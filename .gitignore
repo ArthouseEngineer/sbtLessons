@@ -7,3 +7,6 @@
 *.iml
 out
 gen
+src/META-INF
+input.txt
+output.txt

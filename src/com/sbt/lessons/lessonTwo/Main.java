@@ -1,6 +1,5 @@
-package com.sbt.lessons;
+package com.sbt.lessons.lessonTwo;
 
-import com.sbt.lessons.lessonTwo.*;
 
 
 
